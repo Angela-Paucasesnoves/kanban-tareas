@@ -18,8 +18,29 @@
         <h2>Crear tarea</h2>
 
         <form id="task-form">
-          <label for="titulo">Título</label>
-          <input type="text" id="titulo" name="titulo" />
+          <div>
+            <label for="titulo">Título *</label>
+            <input type="text" id="titulo" name="titulo" required />
+          </div>
+
+          <div>
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+          </div>
+
+          <div>
+            <label for="prioridad">Prioridad</label>
+            <select id="prioridad" name="prioridad">
+              <option value="baixa">Baja</option>
+              <option value="mitjana">Media</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="fecha">Fecha límite</label>
+            <input type="date" id="fecha" name="fecha" />
+          </div>
 
           <button type="submit">Añadir tarea</button>
         </form>
