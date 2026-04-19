@@ -39,14 +39,36 @@ function renderKanban() {
     // colocar según estado
     if (tarea.estado === "perFer") {
       document.getElementById("list-perFer").appendChild(tarjeta);
-    }
-
-    if (tarea.estado === "enCurs") {
+    } else if (tarea.estado === "enCurs") {
       document.getElementById("list-enCurs").appendChild(tarjeta);
-    }
-
-    if (tarea.estado === "fet") {
+    } else if (tarea.estado === "fet") {
       document.getElementById("list-fet").appendChild(tarjeta);
     }
   });
 }
+// CRUD
+
+document.getElementById("task-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const titulo = document.getElementById("titulo").value;
+  const descripcion = document.getElementById("descripcion").value;
+  const prioridad = document.getElementById("prioridad").value;
+  const fecha = document.getElementById("fecha").value;
+
+  const nuevaTarea = {
+    id: Date.now(),
+    titulo,
+    descripcion,
+    prioridad,
+    fechaVencimiento: fecha,
+    estado: "perFer",
+  };
+
+  tareas.push(nuevaTarea);
+
+  guardarTareas();
+  renderKanban();
+
+  this.reset();
+});
