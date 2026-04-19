@@ -16,7 +16,7 @@ function cargarTareas() {
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarTareas();
-  console.log("Tareas cargadas:", tareas);
+  renderKanban();
 });
 
 function renderKanban() {
