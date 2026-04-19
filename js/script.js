@@ -41,8 +41,8 @@ function renderKanban() {
       document.getElementById("list-perFer").appendChild(tarjeta);
     }
 
-    if (tarea.estado === "perCurs") {
-      document.getElementById("list-perCurs").appendChild(tarjeta);
+    if (tarea.estado === "enCurs") {
+      document.getElementById("list-enCurs").appendChild(tarjeta);
     }
 
     if (tarea.estado === "fet") {
