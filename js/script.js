@@ -24,6 +24,8 @@ function cargarTareas() {
 document.addEventListener("DOMContentLoaded", () => {
   cargarTareas();
   renderKanban();
+
+  activarDragDrop();
 });
 
 // =====================
@@ -49,6 +51,14 @@ function renderKanban() {
     tarjeta.classList.add("task-card");
 
     tarjeta.setAttribute("data-priority", tarea.prioridad);
+
+    tarjeta.setAttribute("draggable", "true");
+
+    tarjeta.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", tarea.id);
+    });
+
+    tarjeta.style.userSelect = "none";
 
     tarjeta.innerHTML = `
       <h4>${tarea.titulo}</h4>
@@ -186,4 +196,46 @@ function actualizarEstadisticas() {
   document.getElementById("stat-perFer").textContent = perFer;
   document.getElementById("stat-enCurs").textContent = enCurs;
   document.getElementById("stat-fet").textContent = fet;
+}
+
+// =====================
+// MOVER TARJETAS
+// =====================
+
+function activarDragDrop() {
+  const columnas = document.querySelectorAll(".column");
+
+  columnas.forEach((col) => {
+    const zona = col.querySelector(".task-list");
+
+    col.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      col.classList.add("drag-over");
+    });
+
+    col.addEventListener("dragleave", () => {
+      col.classList.remove("drag-over");
+    });
+
+    col.addEventListener("drop", (e) => {
+      e.preventDefault();
+      col.classList.remove("drag-over");
+
+      console.log("DROP OK");
+
+      const id = e.dataTransfer.getData("text/plain");
+      const tarea = tareas.find((t) => String(t.id) === String(id));
+
+      if (!tarea) return;
+
+      const destino = zona.id;
+
+      if (destino === "list-perFer") tarea.estado = "perFer";
+      if (destino === "list-enCurs") tarea.estado = "enCurs";
+      if (destino === "list-fet") tarea.estado = "fet";
+
+      guardarTareas();
+      renderKanban();
+    });
+  });
 }

@@ -154,7 +154,8 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.column.drag-over {
+.task-list.drag-over {
   background: #dbeafe;
   border: 2px dashed #3b82f6;
+  transition: 0.2s;
 }
