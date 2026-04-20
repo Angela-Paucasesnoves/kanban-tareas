@@ -1,3 +1,5 @@
+let filtroEstado = "todos";
+let textoBusqueda = "";
 let editandoId = null;
 let tareas = [];
 
@@ -33,7 +35,16 @@ function renderKanban() {
   document.getElementById("list-enCurs").innerHTML = "";
   document.getElementById("list-fet").innerHTML = "";
 
-  tareas.forEach((tarea) => {
+  const tareasFiltradas = tareas.filter((tarea) => {
+    const coincideEstado =
+      filtroEstado === "todos" || tarea.estado === filtroEstado;
+
+    const coincideBusqueda = tarea.titulo.toLowerCase().includes(textoBusqueda);
+
+    return coincideEstado && coincideBusqueda;
+  });
+
+  tareasFiltradas.forEach((tarea) => {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("task-card");
 
@@ -141,3 +152,17 @@ function actualizarTextoBoton(texto) {
   const btn = document.querySelector("#task-form button[type='submit']");
   if (btn) btn.textContent = texto;
 }
+
+// =====================
+// FILTRAR
+// =====================
+
+document.getElementById("filtro-estado").addEventListener("change", (e) => {
+  filtroEstado = e.target.value;
+  renderKanban();
+});
+
+document.getElementById("busqueda").addEventListener("input", (e) => {
+  textoBusqueda = e.target.value.toLowerCase();
+  renderKanban();
+});
