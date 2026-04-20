@@ -117,11 +117,11 @@ button:hover {
   border-left-color: #ef4444;
 }
 
-.task-card[data-priority="media"] {
+.task-card[data-priority="mitjana"] {
   border-left-color: #f59e0b;
 }
 
-.task-card[data-priority="baja"] {
+.task-card[data-priority="baixa"] {
   border-left-color: #22c55e;
 }
 

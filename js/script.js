@@ -193,9 +193,18 @@ function actualizarEstadisticas() {
   const fet = tareas.filter((t) => t.estado === "fet").length;
 
   document.getElementById("total").textContent = total;
-  document.getElementById("stat-perFer").textContent = perFer;
-  document.getElementById("stat-enCurs").textContent = enCurs;
-  document.getElementById("stat-fet").textContent = fet;
+
+  const calcularPorcentaje = (valor) =>
+    total === 0 ? 0 : ((valor / total) * 100).toFixed(1);
+
+  document.getElementById("stat-perFer").textContent =
+    `${perFer} (${calcularPorcentaje(perFer)}%)`;
+
+  document.getElementById("stat-enCurs").textContent =
+    `${enCurs} (${calcularPorcentaje(enCurs)}%)`;
+
+  document.getElementById("stat-fet").textContent =
+    `${fet} (${calcularPorcentaje(fet)}%)`;
 }
 
 // =====================
