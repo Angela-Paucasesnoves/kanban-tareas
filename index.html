@@ -46,29 +46,31 @@
         </form>
       </section>
 
-      <section id="filters-section">
-        <h2>Filtros</h2>
+      <aside id="sidebar">
+        <section id="filters-section">
+          <h2>Filtros</h2>
 
-        <label for="filtro-estado">Estado</label>
-        <select id="filtro-estado" name="filtro-estado">
-          <option value="todos">Todos</option>
-          <option value="perFer">Por hacer</option>
-          <option value="enCurs">En curso</option>
-          <option value="fet">Hecho</option>
-        </select>
+          <label for="filtro-estado">Estado</label>
+          <select id="filtro-estado" name="filtro-estado">
+            <option value="todos">Todos</option>
+            <option value="perFer">Por hacer</option>
+            <option value="enCurs">En curso</option>
+            <option value="fet">Hecho</option>
+          </select>
 
-        <label for="busqueda">Buscar</label>
-        <input type="text" id="busqueda" placeholder="Buscar tareas..." />
-      </section>
+          <label for="busqueda">Buscar</label>
+          <input type="text" id="busqueda" placeholder="Buscar tareas..." />
+        </section>
 
-      <section id="estadisticas">
-        <h2>Estadísticas</h2>
+        <section id="estadisticas">
+          <h2>Estadísticas</h2>
 
-        <p>Total: <span id="total">0</span></p>
-        <p>Por hacer: <span id="stat-perFer">0</span></p>
-        <p>En curso: <span id="stat-enCurs">0</span></p>
-        <p>Hechas: <span id="stat-fet">0</span></p>
-      </section>
+          <p>Total: <span id="total">0</span></p>
+          <p>Por hacer: <span id="stat-perFer">0</span></p>
+          <p>En curso: <span id="stat-enCurs">0</span></p>
+          <p>Hechas: <span id="stat-fet">0</span></p>
+        </section>
+      </aside>
 
       <section id="kanban-board">
         <div class="column" id="perFer">
@@ -92,7 +94,10 @@
     </main>
 
     <footer>
-      <p>Proyecto DAW06</p>
+      <div class="footer-content">
+        <p>Proyecto DAW06 - Gestor de tareas Kanban</p>
+        <p>Desarrollo de aplicaciones web</p>
+      </div>
     </footer>
 
     <script src="js/script.js"></script>

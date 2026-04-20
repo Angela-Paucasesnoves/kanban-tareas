@@ -48,6 +48,8 @@ function renderKanban() {
     const tarjeta = document.createElement("div");
     tarjeta.classList.add("task-card");
 
+    tarjeta.setAttribute("data-priority", tarea.prioridad);
+
     tarjeta.innerHTML = `
       <h4>${tarea.titulo}</h4>
       <p>${tarea.descripcion || ""}</p>
