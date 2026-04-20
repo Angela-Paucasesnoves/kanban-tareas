@@ -67,6 +67,8 @@ function renderKanban() {
       document.getElementById("list-fet").appendChild(tarjeta);
     }
   });
+
+  actualizarEstadisticas();
 }
 
 // =====================
@@ -166,3 +168,20 @@ document.getElementById("busqueda").addEventListener("input", (e) => {
   textoBusqueda = e.target.value.toLowerCase();
   renderKanban();
 });
+
+// =====================
+// ESTADISTICAS
+// =====================
+
+function actualizarEstadisticas() {
+  const total = tareas.length;
+
+  const perFer = tareas.filter((t) => t.estado === "perFer").length;
+  const enCurs = tareas.filter((t) => t.estado === "enCurs").length;
+  const fet = tareas.filter((t) => t.estado === "fet").length;
+
+  document.getElementById("total").textContent = total;
+  document.getElementById("stat-perFer").textContent = perFer;
+  document.getElementById("stat-enCurs").textContent = enCurs;
+  document.getElementById("stat-fet").textContent = fet;
+}
