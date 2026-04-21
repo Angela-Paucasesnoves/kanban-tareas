@@ -14,39 +14,41 @@
     </header>
 
     <main>
-      <section id="form-section">
-        <h2>Crear tarea</h2>
+      <div id="top-sections">
+        <section id="form-section">
+          <h2>Crear tarea</h2>
 
-        <form id="task-form">
-          <div>
-            <label for="titulo">Título *</label>
-            <input type="text" id="titulo" name="titulo" required />
-          </div>
+          <form id="task-form">
+            <div class="form-group">
+              <label>Título</label>
+              <input type="text" id="titulo" required />
+            </div>
 
-          <div>
-            <label for="descripcion">Descripción</label>
-            <textarea id="descripcion" name="descripcion"></textarea>
-          </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <textarea id="descripcion"></textarea>
+            </div>
 
-          <div>
-            <label for="prioridad">Prioridad</label>
-            <select id="prioridad" name="prioridad">
-              <option value="baixa">Baja</option>
-              <option value="mitjana">Media</option>
-              <option value="alta">Alta</option>
-            </select>
-          </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prioridad</label>
+                <select id="prioridad">
+                  <option value="baixa">Baja</option>
+                  <option value="mitjana">Media</option>
+                  <option value="alta">Alta</option>
+                </select>
+              </div>
 
-          <div>
-            <label for="fecha">Fecha límite</label>
-            <input type="date" id="fecha" name="fecha" />
-          </div>
+              <div class="form-group">
+                <label>Fecha límite</label>
+                <input type="date" id="fecha" />
+              </div>
+            </div>
 
-          <button type="submit">Añadir tarea</button>
-        </form>
-      </section>
+            <button type="submit">Añadir tarea</button>
+          </form>
+        </section>
 
-      <aside id="sidebar">
         <section id="filters-section">
           <h2>Filtros</h2>
 
@@ -62,15 +64,29 @@
           <input type="text" id="busqueda" placeholder="Buscar tareas..." />
         </section>
 
-        <section id="estadisticas">
+        <div id="estadisticas">
           <h2>Estadísticas</h2>
+          <div class="stat-item stat-total">
+            <span>Total</span>
+            <span id="total"></span>
+          </div>
 
-          <p>Total: <span id="total">0</span></p>
-          <p>Por hacer: <span id="stat-perFer">0</span></p>
-          <p>En curso: <span id="stat-enCurs">0</span></p>
-          <p>Hechas: <span id="stat-fet">0</span></p>
-        </section>
-      </aside>
+          <div class="stat-item stat-perFer">
+            <span>Por hacer</span>
+            <span id="stat-perFer"></span>
+          </div>
+
+          <div class="stat-item stat-enCurs">
+            <span>En curso</span>
+            <span id="stat-enCurs"></span>
+          </div>
+
+          <div class="stat-item stat-fet">
+            <span>Hechas</span>
+            <span id="stat-fet"></span>
+          </div>
+        </div>
+      </div>
 
       <section id="kanban-board">
         <div class="column" id="perFer">

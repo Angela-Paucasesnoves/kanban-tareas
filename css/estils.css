@@ -1,3 +1,6 @@
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
   #kanban-board {
     flex-direction: column;
@@ -7,8 +10,15 @@
     width: 100%;
     margin-bottom: 15px;
   }
+
+  #top-sections {
+    grid-template-columns: 1fr;
+  }
 }
 
+/* =========================
+   GENERAL
+========================= */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -31,6 +41,9 @@ main {
   padding: 20px;
 }
 
+/* =========================
+   FOOTER
+========================= */
 footer {
   background: linear-gradient(90deg, #1f2937, #111827);
   color: white;
@@ -49,27 +62,115 @@ footer:hover {
   opacity: 0.95;
 }
 
+/* =========================
+   TOP SECTIONS
+========================= */
+#top-sections {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Tarjetas */
 #form-section,
 #filters-section,
 #estadisticas {
   background: white;
   padding: 15px;
-  margin-bottom: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+#form-section:hover,
+#filters-section:hover,
+#estadisticas:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
 input,
 select,
 textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  padding: 7px 10px;
+  margin: 3px 0 8px 0;
+
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+
+  font-size: 13px;
+  transition: all 0.2s ease;
 }
 
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+#form-section {
+  border-top: 4px solid #2563eb;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 12px;
+}
+
+#form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 12px;
+  margin-bottom: 2px;
+  font-weight: 600;
+  color: #374151;
+}
+
+textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+#form-section button {
+  align-self: center;
+  width: auto;
+  padding: 8px 18px;
+  margin-top: 8px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
 button {
   background: #2563eb;
   color: white;
@@ -77,12 +178,56 @@ button {
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
 button:hover {
   background: #1e40af;
 }
 
+button:active {
+  transform: scale(0.97);
+}
+
+/* =========================
+   ESTADÍSTICAS
+========================= */
+#estadisticas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-item {
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 5px solid #3b82f6;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.stat-total {
+  border-left-color: #6b7280;
+}
+
+.stat-perFer {
+  border-left-color: #f59e0b;
+}
+
+.stat-enCurs {
+  border-left-color: #3b82f6;
+}
+
+.stat-fet {
+  border-left-color: #22c55e;
+}
+
+/* =========================
+   KANBAN BOARD
+========================= */
 #kanban-board {
   display: flex;
   gap: 15px;
@@ -102,6 +247,9 @@ button:hover {
   color: #111827;
 }
 
+/* =========================
+   TASK CARD
+========================= */
 .task-card {
   background: white;
   padding: 10px;
@@ -110,27 +258,43 @@ button:hover {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   cursor: grab;
   border-left: 5px solid #3b82f6;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* PRIORIDADES */
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   PRIORIDADES
+========================= */
 .task-card[data-priority="alta"] {
   border-left-color: #ef4444;
 }
 
 .task-card[data-priority="mitjana"] {
-  border-left-color: #f59e0b;
+  border-left-color: #8b5cf6;
 }
 
 .task-card[data-priority="baixa"] {
-  border-left-color: #22c55e;
+  border-left-color: #14b8a6;
 }
 
+/* =========================
+   ACTION BUTTONS
+========================= */
 .actions {
   display: flex;
   gap: 5px;
   margin-top: 10px;
 }
 
+/* =========================
+   COLUMN COLORS
+========================= */
 #list-perFer {
   border-top: 4px solid #f59e0b;
 }
@@ -143,19 +307,62 @@ button:hover {
   border-top: 4px solid #22c55e;
 }
 
-.task-card {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.task-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
+/* =========================
+   DRAG & DROP
+========================= */
 .task-list.drag-over {
   background: #dbeafe;
   border: 2px dashed #3b82f6;
   transition: 0.2s;
+}
+
+/* =========================
+   RESPONSIVE TOP SECTIONS
+========================= */
+
+@media (max-width: 768px) {
+  #top-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #form-section {
+    padding: 10px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  #filters-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #estadisticas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  #form-section button {
+    width: 100%;
+    align-self: stretch;
+  }
 }
